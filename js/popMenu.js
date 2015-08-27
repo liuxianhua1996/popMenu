@@ -86,8 +86,15 @@
 					return false;
 				}
 				this.$parent = parent;
+				this.$el.css({
+					left: this.$parent.offset().left + this.$parent.width()/2 - this.$el.width()/2,
+					top:this.$parent.offset().top + this.$parent.height(),
+				});
 				this.$parent.bind("mouseover", _.bind(this.display, this));
 				this.$parent.bind("mouseleave", _.bind(this.disappear, this));
+			},
+			setWidth:function(width){
+				this.$el.width = width || "100%";
 			},
 			display: function() {
 				if (this.msgQue.length == 0) {
